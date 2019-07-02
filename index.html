@@ -1,12 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <title>Crystals Collector Game</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <!-- Added link to the jQuery Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- Added a link to Bootstrap-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
 </head>
+
 <body>
+       
+<div class="container">
+    <div class="well">
+        <div class="row">                  
+            <div class="col-md-4" style="background-color: coral">
+                </br>
+                <h1 class="text-left" myh1>Crystals Collector!</h1>
+            </div>
+        </div>
+    </div>
+    </br>
     
+    
+    <div class="row">
+        <div class="col-md-6" style="background-color: antiquewhite">
+            <p></p>
+            <p>You will be given a random number at the start of the game.</p>
+            <p></p>
+            <p>There are four crystals below. By clicking on a crystal you 
+                will add a specific amount of points to your total score.</p>
+            <p></p>
+            <p>You win the game by matching your total score to random number, 
+                you lose the game if your total score goes above the random number.</p>
+            <p></p>
+            <p>The value of each crystal is hidden from you until you click on it.</p>
+            <p></p>
+            <p>Each time when the game starts, the game will change the values of 
+                each crystal.</p>
+        </div><!-- end col mb-12 -->
+    </div><!-- end row -->
+    </br>
+    <div class="row">
+        <div class="col-md-4" style="background-color: lightgreen">
+            <div id="computerRandomNumber">
+                <p>Hi</p>
+                <span id=myComputerRandomNumber</span>
+            </div>
+        </div><!-- end 4 -->
+        <div class="col-md-2" style="background-color:steelblue">
+            <div id="wins-losses">
+                <p>Bye</p>
+                <span id=yourWinsLoses</span>
+
+            </div>
+           
+        </div><!-- end 2 -->
+    </div><!-- end row -->
+    </br>
+    <div class="row">
+        <div class="col-md-6">
+            <div id="crystals">
+                <img src="assets/images/crystal-red.png" class="img crystal-red">
+     <img src="assets/images/crystal-blue.png" class="img crystal-blue">
+     <img src="assets/images/crystal-yellow.png" class="img crystal-yellow">
+    <img src="assets/images/crystal-green.png" class="img crystal-green">
+            </div>
+        </div>
+    </div>
+ 
+    </br>
+    <div class="row">     
+        <div class="col-md-4" style="background-color: teal">        
+        <p>Your Total Score Is:</p>
+        </div>
+    </div> <!-- end row -->
+    </br>
+    <div class="row">     
+        <div class="col-md-4" style="background-color: teal">        
+            <p> user sum goes here</p>
+        </div>
+    </div> <!-- end row -->
+
+</div> <!-- end container -->
+
+   <!-- <div type="button" class="box b1 crystal-" value="10">
+            <img src="assets/images/crystal-red.png">;
+        </div>
+        <div type="button" class="box b2 crystal-red" value="10">
+                <img src="assets/images/crystal-red.png">;
+        </div> -->
+
+<!-- <img src="assets/images/crystal-red.png" class="img crystal-red">
+     <img src="assets/images/crystal-blue.png" class="img crystal-blue">
+     <img src="assets/images/crystal-yellow.png" class="img crystal-yellow">
+    <img src="assets/images/crystal-green.png" class="img crystal-green"> -->
+
+
+  
+  <script>
+     var targetNumber=53;
+     $("#number-to-guess").text(targetNumber);
+  var counter = 0;
+  var numberOptions = [10, 20, 30, 40];
+
+  for (var i = 0; i < numberOptions.length; i++) {
+    var imageCrystal = $("<img>");
+    imageCrystal.addClass("crystal-image");
+    imageCrystal.attr("src", "assets/images/crystal-red.png");
+    imageCrystal.attr("data-crystalvalue", numberOptions[i]);
+    $("#crystals").append(imageCrystal);
+  }
+
+  $(".crystal-image").on("click", function() {
+    var crystalValue = ($(this).attr("data-crystalvalue"));
+    crystalValue = parseInt(crystalValue);
+    counter += crystalValue;
+    alert("New score: " + counter);
+    if (counter === targetNumber) {
+      alert("You win!");
+    }
+    else if (counter >= targetNumber) {
+      alert("You lose!!");
+    }
+  });
+     
+    
+  </script>
+
 </body>
+
 </html>

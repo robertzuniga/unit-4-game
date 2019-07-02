@@ -1,1 +1,18 @@
 /* Robert Zuniga css file */
+
+body {
+    /* Typography */
+    font-size: 18px;
+    line-height: 30px;
+  
+    /* Visual */
+    /* background-color: lightgrey; */
+    background-image: url("../images/background.png");
+
+  }
+  
+.crystal-image{
+        max-width: 100%;
+        max-height: 100%
+} 
+
