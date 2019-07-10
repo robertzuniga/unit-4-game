@@ -9,7 +9,8 @@ $(document).ready(function() {
   var blueValue = 0;
   var greenValue = 0;
   var yellowValue = 0;
-
+  var sum = 0;
+  crystalValue= 0;
 
 
    //get computerRandomNumber to match
@@ -29,8 +30,10 @@ $(document).ready(function() {
         { fileName: "crystal-green.png", value: greenValue },
         { fileName: "crystal-yellow.png", value: yellowValue},
     ];
+ 
+    console.log ("red: ",numberOptions[1].value);
 
-//assign crystal values to images on DOM 
+    //assign crystal values to images on DOM 
   for (var i = 0; i < numberOptions.length; i++) {
     var imageCrystal = $("<img>");
     imageCrystal.addClass("crystal-image");
@@ -45,26 +48,58 @@ $(document).ready(function() {
 
 
 
-
-
+console.log (sum);
 
 
 
   // click crystal image to get value to sum and check 
   $(".crystal-image").on("click", function() {
-    var crystalValue = ($(this).attr("data-crystalvalue"));
+    crystalValue = ($(this).attr("data-crystalvalue"));
     crystalValue = parseInt(crystalValue);
 
 
 
 
+    sum = sum+crystalValue;
+    console.log ("sum: ",sum);
+   
+
+    $("#sumCrystalValues").text(`  ${sum}`);
+   
+   
+   if (sum === computerRandomNumber){
+     console.log("match");
+     $("#yourWinsLosses").text('wins: ' + wins);
+    } else {
+     if (sum > computerRandomNumber) {
+       console.log("lose")
+       losses++;
+       sum=0;
+       computerRandomNumber=Math.floor(Math.random()*101)+19;
+       $("#myComputerRandomNumber").text('Value Needed: '+ computerRandomNumber);
+       redValue=Math.floor(Math.random()*12)+1;
+       blueValue=Math.floor(Math.random()*12)+1;
+       greenValue=Math.floor(Math.random()*12)+1;
+       yellowValue=Math.floor(Math.random()*12)+1;
+       
+       numberOptions[1].value = redValue;
+       numberOptions[2].value = blueValue;
+       numberOptions[3].value = greenValue;
+       numberOptions[4].value = yellowValue;
+
+       
+       $("#yourWinsLosses").text('losses: ' + losses);
+     } //end losses
+     else {
+      console.log ("In the game: ",sum);
+   
+
+     }
+   }
 
 
 
-    $("#sumCrystalValues").text(`  ${crystalValue}`);
-   
-   
-   
+
    
    
    
@@ -78,6 +113,7 @@ $(document).ready(function() {
     //   alert("You lose!!");
     // }
   });
+
 
 });
 
