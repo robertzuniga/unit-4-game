@@ -34,7 +34,7 @@ $(document).ready(function() {
     console.log ("red: ",numberOptions[1].value);
 
     //assign crystal values to images on DOM 
-  for (var i = 0; i < numberOptions.length; i++) {
+    for (var i = 0; i < numberOptions.length; i++) {
     var imageCrystal = $("<img>");
     imageCrystal.addClass("crystal-image");
     imageCrystal.attr("src", "assets/images/" + numberOptions[i].fileName);
@@ -82,8 +82,8 @@ console.log (sum);
        greenValue=Math.floor(Math.random()*12)+1;
        yellowValue=Math.floor(Math.random()*12)+1;
        
-       numberOptions[1].value = redValue;
-       numberOptions[2].value = blueValue;
+       numberOptions[0].value = redValue;
+       numberOptions[1].value = blueValue;
        numberOptions[3].value = greenValue;
        numberOptions[4].value = yellowValue;
 
