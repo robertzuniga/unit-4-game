@@ -17,7 +17,8 @@ $(document).ready(function() {
     computerRandomNumber=Math.floor(Math.random()*101)+19;
     $("#myComputerRandomNumber").text('Value Needed: '+ computerRandomNumber);
   
-  
+    console.log('Value Needed: ',computerRandomNumber);
+
   //get random numbers for crytals and assign to numberOptions object 
     redValue=Math.floor(Math.random()*12)+1;
     blueValue=Math.floor(Math.random()*12)+1;
@@ -31,7 +32,10 @@ $(document).ready(function() {
         { fileName: "crystal-yellow.png", value: yellowValue},
     ];
  
-    console.log ("red: ",numberOptions[1].value);
+    console.log ("red: ",numberOptions[0].value);
+    console.log ("blue: ",numberOptions[1].value);
+    console.log ("green: ",numberOptions[2].value);
+    console.log ("yellow: ",numberOptions[3].value);
 
     //assign crystal values to images on DOM 
     for (var i = 0; i < numberOptions.length; i++) {
@@ -42,23 +46,12 @@ $(document).ready(function() {
     $("#crystals").append(imageCrystal);
   }
 
-
-
-
-
-
-
-console.log (sum);
-
-
+  console.log("initial sum: ",sum);
 
   // click crystal image to get value to sum and check 
   $(".crystal-image").on("click", function() {
     crystalValue = ($(this).attr("data-crystalvalue"));
     crystalValue = parseInt(crystalValue);
-
-
-
 
     sum = sum+crystalValue;
     console.log ("sum: ",sum);
@@ -68,13 +61,15 @@ console.log (sum);
    
    
    if (sum === computerRandomNumber){
-     console.log("match");
-     $("#yourWinsLosses").text('wins: ' + wins);
+      console.log("match");
+      wins++
+     $("#yourWinsLosses").text('wins: '+ wins  + '    losses: ' + losses);
     } else {
      if (sum > computerRandomNumber) {
        console.log("lose")
        losses++;
        sum=0;
+       $("#sumCrystalValues").text(`  ${sum}`);
        computerRandomNumber=Math.floor(Math.random()*101)+19;
        $("#myComputerRandomNumber").text('Value Needed: '+ computerRandomNumber);
        redValue=Math.floor(Math.random()*12)+1;
@@ -84,12 +79,16 @@ console.log (sum);
        
        numberOptions[0].value = redValue;
        numberOptions[1].value = blueValue;
-       numberOptions[3].value = greenValue;
-       numberOptions[4].value = yellowValue;
+       numberOptions[2].value = greenValue;
+       numberOptions[3].value = yellowValue;
 
-       
-       $("#yourWinsLosses").text('losses: ' + losses);
-     } //end losses
+       console.log ("new red: ",numberOptions[0].value);
+       console.log ("new blue: ",numberOptions[1].value);
+       console.log ("new green: ",numberOptions[2].value);
+       console.log ("new yellow: ",numberOptions[3].value);
+
+       $("#yourWinsLosses").html('<p> wins: '+ wins  + "</p><p>" +'    losses: ' + losses + '</p>');
+      } //end losses
      else {
       console.log ("In the game: ",sum);
    
@@ -98,20 +97,6 @@ console.log (sum);
    }
 
 
-
-
-   
-   
-   
-   
-    // counter += crystalValue;
-    // alert("New score: " + counter);
-    // if (counter === targetNumber) {
-    //   alert("You win!");
-    // }
-    // else if (counter >= targetNumber) {
-    //   alert("You lose!!");
-    // }
   });
 
 
