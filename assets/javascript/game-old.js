@@ -41,7 +41,7 @@ $(document).ready(function() {
 
       //assign crystal values to images on DOM 
       for (var i = 0; i < numberOptions.length; i++) {
-        var imageCrystal = $("<img>");
+        //var imageCrystal = $("<img>");
         imageCrystal = $("<img>");
         imageCrystal.addClass("crystal-image");
         imageCrystal.attr("src", "assets/images/" + numberOptions[i].fileName);
@@ -58,7 +58,7 @@ $(document).ready(function() {
   //
   /////////////////////////////////////////////////////////////////////////////////////////////////
 
-    $("#crystals").on("click", ".crystal-image",function() {
+    $(".crystal-image").on("click", function() {
         crystalValue = ($(this).attr("data-crystalvalue"));
         crystalValue = parseInt(crystalValue);
 
@@ -115,15 +115,6 @@ $(document).ready(function() {
            //}
 
           $("#yourWinsLosses").html('<p> wins: '+ wins  + "</p><p>" +'    losses: ' + losses + '</p>');   
-          $("#crystals").empty()
-          for (var i = 0; i < numberOptions.length; i++) {
-            var imageCrystal = $("<img>");
-            imageCrystal = $("<img>");
-            imageCrystal.addClass("crystal-image");
-            imageCrystal.attr("src", "assets/images/" + numberOptions[i].fileName);
-            imageCrystal.attr("data-crystalvalue", numberOptions[i].value);
-            $("#crystals").append(imageCrystal);
-          }
           //end win updates   
           
         } else {
@@ -156,15 +147,6 @@ $(document).ready(function() {
              console.log ("new yellowL: ",numberOptions[3].value);
 
             $("#yourWinsLosses").html('<p> wins: '+ wins  + "</p><p>" +'    losses: ' + losses + '</p>');
-            $("#crystals").empty()
-            for (var i = 0; i < numberOptions.length; i++) {
-              var imageCrystal = $("<img>");
-              imageCrystal = $("<img>");
-              imageCrystal.addClass("crystal-image");
-              imageCrystal.attr("src", "assets/images/" + numberOptions[i].fileName);
-              imageCrystal.attr("data-crystalvalue", numberOptions[i].value);
-              $("#crystals").append(imageCrystal);
-            }
             //end losses updates
           } else {
             console.log ("In the game: ",sum);
